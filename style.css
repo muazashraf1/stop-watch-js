@@ -1,85 +1,104 @@
-*{
-    margin:0;
-    padding:0;
+* {
+  margin: 0;
+  padding: 0;
 }
 
-body{
-    height:100vh;
-    background-image: url(./images/pexels-matej-117839-1034425.jpg);
-    background-size: 100% 100%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+body {
+  height: 100vh;
+  background-image: url(./images/pexels-matej-117839-1034425.jpg);
+  background-size: 100% 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
-.main{
-    height: 400px;
-    width: 600px;
-    border: 2px solid  rgba(255, 255, 255, 0.2);
-    background: rgba(255, 255, 255, 0.05);
-    box-shadow: 20px 20px 30px 40px black;
-    backdrop-filter: blur(1px);
-    overflow: hidden;
-    transition: transform 0.6s ease, box-shadow 0.6s ease;
-    display: flex;
-    align-items: center;
-    justify-content: space-around;
+.main {
+  height: 400px;
+  width: 600px;
+  border: 2px solid rgba(255, 255, 255, 0.2);
+  background: rgba(255, 255, 255, 0.05);
+  box-shadow: 20px 20px 30px 40px black;
+  backdrop-filter: blur(1px);
+  overflow: hidden;
+  transition:
+    transform 0.6s ease,
+    box-shadow 0.6s ease;
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
 }
 
-.main:hover{
-    transform: scale(1.02);
-    box-shadow: 30px 30px 40px 60px black;
+.main:hover {
+  transform: scale(1.02);
+  box-shadow: 30px 30px 40px 60px black;
+}
+.circle {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  border: 4px solid #00ffcc;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  animation: rotate-circle 1s linear infinite;
+  animation-play-state: paused; /* IMPORTANT */
 }
 
-.circle{
-    position:relative;
-    width:200px;
-    height: 200px;
-    border: 4px solid #00ffcc;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
+.time {
+  position: absolute;
+  left: 90px;
 }
 
-.dot{
-    width:20px;
-    height:20px;
-    background: red;
-    border-radius: 50%;
-    position: absolute;
-    top:50%;
-    left: 24%;
-    transform: translate(-50%, -50%) rotate(0deg) translate(100px);
-    /* animation: rotateDot 1s linear infinite; */
+.circle::after {
+  content: "";
+  position: absolute;
+  height: 15px;
+  width: 15px;
+  border-radius: 50px;
+  background-color: red;
+  top: -8px;
 }
 
-@keyframes rotateDot {
-    0%{
-        transform: translate(-50%, -50%) rotate(0deg) translate(100px);
-    }
-    100%{
-        transform: translate(-50%, -50%) rotate(360deg) translate(100px);
-    }
+/* .dot {
+  width: 20px;
+  height: 20px;
+  background: red;
+  border-radius: 50%;
+  position: absolute;
+  top: 50%;
+  left: 24%;
+  transform: translate(-50%, -50%) rotate(0deg) translate(100px);
+} */
+
+@keyframes rotate-circle {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
 }
 
 .buttons button {
-    border-radius: 20px;
-    border: none;
-    background-color: #00ffcc;
-    padding: 20px 30px;
-    font-size: 25px;
-    margin-left: 40px;
-    cursor: pointer;
+  border-radius: 20px;
+  border: none;
+  background-color: #00ffcc;
+  padding: 20px 30px;
+  font-size: 25px;
+  margin-left: 40px;
+  cursor: pointer;
 }
 
-.topH1{
-    position: absolute;
-    top: 10;
-    background-image: linear-gradient(to right, rgb(237, 44, 44) , rgb(83, 231, 38))  ;
-    color:black; 
-    padding: 10px;
-    cursor: pointer;
+.topH1 {
+  position: absolute;
+  top: 10;
+  background-image: linear-gradient(
+    to right,
+    rgb(237, 44, 44),
+    rgb(83, 231, 38)
+  );
+  color: black;
+  padding: 10px;
+  cursor: pointer;
 }
-
-

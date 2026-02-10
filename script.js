@@ -3,50 +3,54 @@ const pauseIcn = document.querySelector(".btn2");
 const playBtn = document.querySelector(".play");
 const pauseBtn = document.querySelector(".pause");
 const resetBtn = document.querySelector(".btn3");
-const dot = document.querySelector(".dot");
-const timeDisplay = document.querySelector(".circle h1");
+const circle = document.querySelector(".circle")
+const timeDisplay = document.querySelector(".time");
 
-timeDisplay.style.color = "#00ffcc";
-timeDisplay.style.fontSize = "29px";
-timeDisplay.style.fontFamily = "monospace";
+// timeDisplay.style.color = "#00ffcc";
+// timeDisplay.style.fontSize = "29px";
+// timeDisplay.style.fontFamily = "monospace";
 
 let seconds = 0;
 let timer = null;
 
 function updateTime() {
-    let hours = Math.floor(seconds / 3600);
-    let minutes = Math.floor((seconds % 3600) / 60);
-    let secs = Math.floor(seconds % 60)
+  let hours = Math.floor(seconds / 3600);
+  let minutes = Math.floor((seconds % 3600) / 60);
+  let secs = Math.floor(seconds % 60);
 
-    timeDisplay.innerHTML = `${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")}`          
-};
+  timeDisplay.innerHTML = `${hours.toString().padStart(2, "0")}:${minutes.toString().padStart(2, "0")}:${secs.toString().padStart(2, "0")}`;
+}
 
 playBtn.addEventListener("click", () => {
-    dot.style.animation = "rotateDot 1s linear infinite"
+  circle.style.animationPlayState = "running";
 
-    timer = setInterval(() => {
-        seconds++;
-        updateTime();
-    }, 1000);
+  timer = setInterval(() => {
+    seconds++;
+    updateTime();
+  }, 1000);
 
-    playBtn.style.display = "none";
-    pauseBtn.style.display = "inline-block";
+  playBtn.style.display = "none";
+  pauseBtn.style.display = "inline-block";
 });
 
 pauseBtn.addEventListener("click", () => {
-    dot.style.animation = "none";
-    clearInterval(timer);
+  circle.style.animationPlayState = "paused";
+  clearInterval(timer);
 
-     pauseBtn.style.display = "none";
-    playBtn.style.display = "inline-block";
+  pauseBtn.style.display = "none";
+  playBtn.style.display = "inline-block";
 });
 
 resetBtn.addEventListener("click", () => {
-    dot.style.animation = "none";
-    clearInterval(timer);
-    seconds = 0;
-    updateTime();
+   clearInterval(timer);
+  timer = null;
 
-    playBtn.style.display = "inline-block";
-    pauseBtn.style.display = "none"
+  seconds = 0;
+  updateTime();
+
+  circle.style.animationPlayState = "paused";
+
+  playBtn.style.display = "inline-block";
+  pauseBtn.style.display = "none";
 });
+
